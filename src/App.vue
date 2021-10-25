@@ -1,23 +1,26 @@
 <template>
   <base-container title="Vuex"></base-container>
-  <h2>counter {{ counter }}</h2>
+  <h2>counter {{ finalCounter }}</h2>
+  <h2>counter {{ normalisedCounter }}</h2>
   <button @click="addByOne">Add By 1</button>
   <button @click="addByTen">Add By 10</button>
 </template>
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
-
+import { mapGetters } from 'vuex';
 export default {
   components: {
     BaseContainer,
   },
   computed: {
-    counter() {
-      // return this.$store.getters.finalCounter;
+    // counter() {
+    //   // return this.$store.getters.finalCounter;
 
-      return this.$store.getters.normalisedCounter;
-    },
+    //  // return this.$store.getters.normalisedCounter;
+    // },
+
+    ...mapGetters(['finalCounter', 'normalisedCounter']),
   },
   methods: {
     addByOne() {
