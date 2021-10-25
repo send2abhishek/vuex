@@ -21,7 +21,7 @@ const store = createStore({
     finalCounter(state) {
       return state.counter * 2;
     },
-    normalisedCounter(state, getters) {
+    normalisedCounter(_, getters) {
       const finalCounter = getters.finalCounter;
       if (finalCounter < 0) {
         return 0;
