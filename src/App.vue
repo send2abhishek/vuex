@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     addByOne() {
-      this.$store.commit('increment');
+      this.$store.dispatch('increment');
     },
     addByTen() {
       // this.$store.commit('increase', { value: 10 });
