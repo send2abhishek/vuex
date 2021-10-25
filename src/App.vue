@@ -1,17 +1,27 @@
 <template>
   <base-container title="Vuex"></base-container>
-  <h2>counter {{ finalCounter }}</h2>
-  <h2>counter {{ normalisedCounter }}</h2>
-  <button @click="addByOne">Add By 1</button>
-  <button @click="addByTen">Add By 10</button>
+
+  <base-container title="UserAuth" v-if="userIsAuthenticated">
+    <user-auth></user-auth>
+    <h2>counter {{ finalCounter }}</h2>
+    <h2>counter {{ normalisedCounter }}</h2>
+    <button @click="addByOne">Add By 1</button>
+    <button @click="addByTen">Add By 10</button>
+  </base-container>
+
+  <base-container title="UserAuth">
+    <user-auth></user-auth>
+  </base-container>
 </template>
 
 <script>
 import BaseContainer from './components/BaseContainer.vue';
+import UserAuth from './components/UserAuth.vue';
 import { mapGetters } from 'vuex';
 export default {
   components: {
     BaseContainer,
+    UserAuth,
   },
   computed: {
     // counter() {
@@ -20,7 +30,7 @@ export default {
     //  // return this.$store.getters.normalisedCounter;
     // },
 
-    ...mapGetters(['finalCounter', 'normalisedCounter']),
+    ...mapGetters(['finalCounter', 'normalisedCounter', 'userIsAuthenticated']),
   },
   methods: {
     addByOne() {
