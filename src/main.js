@@ -20,6 +20,16 @@ const store = createStore({
   getters: {
     finalCounter(state) {
       return state.counter * 2;
+    },
+    normalisedCounter(state) {
+      const finalCounter = state.counter * 3;
+      if (finalCounter < 0) {
+        return 0;
+      } else if (finalCounter > 50) {
+        return 50;
+      } else {
+        return finalCounter;
+      }
     }
   }
 });
